@@ -32,6 +32,8 @@ def start_attack(message):
             bot.reply_to(message, f"حدث خطأ أثناء التنفيذ:\n{stderr.decode()}")
     except Exception as e:
         bot.reply_to(message, f"حدث خطأ: {e}")
-
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "مرحبًا! كيف يمكنني مساعدتك؟")
 # تشغيل البوت
-bot.polling()
+bot.polling(timeout=60, long_polling_timeout=60)
